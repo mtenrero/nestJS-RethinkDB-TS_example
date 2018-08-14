@@ -12,7 +12,14 @@ export class RethinkController {
 
   @Post('table/:name')
   async newTable(@Param ('name') name): Promise<string> {
-    let creationResult = await this.rethinkService.createTable(name)
-    return "Name " + name + " received!\n" + JSON.stringify(creationResult)
+    let response = await this.rethinkService.createTable(name)
+      .then(result => {
+        return "Name " + name + " received!\n" + JSON.stringify(result)
+      })
+      .catch(reason => {
+        return reason
+      })
+  
+      return response
   }
 }
