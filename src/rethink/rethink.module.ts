@@ -7,6 +7,9 @@ import { RethinkProvider } from './database.provider'
   imports: [],
   controllers: [RethinkController],
   providers: [RethinkService, RethinkProvider],
-  exports: [RethinkProvider]
+  exports: [
+    RethinkProvider,
+    RethinkService
+  ]
 })
 export class RethinkModule {}
