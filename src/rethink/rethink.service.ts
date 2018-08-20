@@ -20,4 +20,18 @@ export class RethinkService {
         return result
     }
 
+    /**
+     * Inserts data in the specified table
+     * @param tableName Table where insert data
+     * @param content Data to insert
+     */
+    async insert(tableName:string, content:object): Promise<rethink.WriteResult> {
+        let result = await rethink
+            .table(tableName)
+            .insert(content)
+            .run(this.connection)
+    
+        return result
+    }
+
 }
